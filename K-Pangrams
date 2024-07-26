@@ -1,0 +1,27 @@
+class Solution {
+    boolean kPangram(String str, int k) {
+            
+     int n =str.length();
+    if( n < 26) return false;
+    int spaceCount=0;
+    int []freq = new int[26];
+    int missingChar =0;
+    int charCount=0;
+    for(int i=0;i<n;i++){
+        char ch =str.charAt(i);
+        if(ch !=32){
+            charCount++;
+            freq[ch-'a']++;
+        }else{
+            spaceCount++;
+        }
+    }
+    for(int i=0;i<26;i++){
+        if(freq[i]==0) missingChar++;
+    }
+    if(charCount <26 || missingChar >k){
+         return false;
+    }
+    return true;
+    }
+}
