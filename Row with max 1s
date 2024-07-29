@@ -1,0 +1,23 @@
+class Solution {
+    public int rowWithMax1s(int arr[][]) {
+        int rows = arr.length;
+        int cols = arr[0].length;
+
+        int maxRowIndex = -1;
+        int maxCount = 0;
+
+        int row = 0;
+        int col = cols - 1;
+
+        while (row < rows && col >= 0) {
+            if (arr[row][col] == 1) {
+                maxRowIndex = row;  
+                col--; 
+            } else {
+                row++; 
+            }
+        }
+
+        return maxRowIndex;
+    }
+}
