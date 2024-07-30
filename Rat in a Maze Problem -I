@@ -1,0 +1,34 @@
+class Solution {
+    public ArrayList<String> findPath(int[][] mat) {
+        int n=mat.length;
+        ArrayList<String> ans = new ArrayList<>();
+        if(mat[n-1][n-1]==0|| mat[0][0]==0) return ans;
+         boolean[][] vis = new boolean[n][n];
+        func(mat,ans,"",0,0,n,vis);
+        
+        return ans;
+    }
+    private void func(int [][]mat ,ArrayList<String> ans ,String path,
+    int row,int col,int n,boolean [][]vis){
+        if(row == n-1 && col == n-1){
+            ans.add(path);
+            return;
+        }
+        if(row < 0|| row>=n||col<0|| col >=n|| mat[row][col]==0 ||
+        vis[row][col]){
+            return;
+        }
+        
+        vis[row][col]=true;
+        //up
+        func(mat,ans,path+"U",row-1,col,n,vis);
+        //down
+        func(mat,ans,path+"D",row+1,col,n,vis);
+        //right
+        func(mat,ans,path+"R",row,col+1,n,vis);
+        //left
+         func(mat,ans,path+"L",row,col-1,n,vis);
+         
+         vis[row][col]=false;
+    }
+}
