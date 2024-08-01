@@ -1,0 +1,45 @@
+class Solution {
+
+// top starts at the first row (0).
+// bottom starts at the last row (matrix.size() - 1).
+// left starts at the first column (0).
+// right starts at the last column (matrix[0].size() - 1
+    // Function to return a list of integers denoting spiral traversal of matrix.
+    public ArrayList<Integer> spirallyTraverse(int mat[][]) {
+        int n=mat[0].length;
+        int m=mat.length;
+          // code here
+     ArrayList<Integer> ans=new ArrayList<>();
+     
+       int top=0,bottom=m-1;
+       int left=0,right=n-1;
+     while(left <=right && top<=bottom){
+
+         for(int i=left;i<=right;i++)
+            ans.add(mat[top][i]);
+         
+         top++;
+         
+         for(int i=top;i<=bottom;i++)
+            ans.add(mat[i][right]);
+        
+         
+         right--;
+
+         if(top<=bottom){
+             for(int i=right;i>=left;i--)
+                 ans.add(mat[bottom][i]);
+                 
+             
+             bottom--;
+         }
+         if(left<=right){
+             for(int i=bottom;i>=top;i--)
+                 ans.add(mat[i][left]);
+             
+             left++;
+         }    
+      }
+      return ans;
+    }
+}
