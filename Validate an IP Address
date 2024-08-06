@@ -1,0 +1,16 @@
+class Solution {
+    public boolean isValid(String str) {
+        
+       String [] s = str.split("\\.");
+       int N= s.length;
+       if(N < 4) return false;
+       
+       for(int i=0;i<N;i++){
+           int num = Integer.parseInt(s[i]);
+           if(!(num >=0 && num <=255)){
+               return false;
+           }
+       }
+       return true;
+    }
+}
