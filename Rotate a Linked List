@@ -1,0 +1,38 @@
+class Solution{
+    //Function to rotate a linked list.
+    public Node rotate(Node head, int k) {
+        // add code here
+         int size = sizeOfList(head);
+
+    if (size <= 1 || k % size == 0) {
+        return head;
+    }
+
+    int steps = k % size; // Adjust steps for left shift
+    Node pTmp = head;
+    Node pPre = null;
+
+    for (int i = 0; i < steps; i++) {
+        pPre = pTmp;
+        pTmp = pTmp.next;
+    }
+    pPre.next = null;
+
+    Node newHead = pTmp;
+    while (pTmp.next != null) {
+        pTmp = pTmp.next;
+    }
+    pTmp.next = head;
+
+    return newHead;
+    }
+    public int sizeOfList(Node head) {
+    Node pTmp = head;
+    int count = 0;
+    while (pTmp != null) {
+        pTmp = pTmp.next;
+        count++;
+    }
+    return count;
+}
+}
