@@ -1,0 +1,35 @@
+class Solution {
+    public Node addOne(Node head) {
+       Node temp=reverse(head);
+       Node curr=temp;
+       Node prev=null;
+       int num=0;
+       int carry=1;
+       while(curr!=null){
+           num = (curr.data + carry) % 10;
+           carry = (curr.data + carry) / 10;
+           curr.data = num;
+           prev=curr;
+           curr=curr.next;
+       }
+       if(carry==1){
+           Node newNode = new Node(1);
+           prev.next=newNode;
+       }
+       Node h1=reverse(temp);
+       
+       return h1;
+    }
+    public Node reverse(Node head){
+        Node prev=null;
+        Node curr=head;
+        Node next;
+        while(curr!=null){
+             next=curr.next;
+             curr.next=prev;
+             prev=curr;
+             curr=next;
+        }
+        return prev;
+    }
+}
