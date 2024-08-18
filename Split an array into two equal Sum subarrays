@@ -1,0 +1,26 @@
+class Solution {
+    public boolean canSplit(int arr[]) {
+          int length = arr.length;
+        if (length == 1) {
+            return false;
+        }
+        
+        int leftSum = arr[0];
+        int rightSum = arr[length - 1];
+        
+        int leftIndex = 1;
+        int rightIndex = length - 2;
+        
+        while (leftIndex <= rightIndex) {
+            if (leftSum < rightSum) {
+                leftSum += arr[leftIndex];
+                leftIndex++;
+            } else {
+                rightSum += arr[rightIndex];
+                rightIndex--;
+            }
+        }
+        
+        return rightSum == leftSum;
+    }
+}
